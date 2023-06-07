@@ -13,6 +13,7 @@ import InstructorPage from "./pages/GeneralPages/InstructorPage";
 import ClassesPage from "./pages/GeneralPages/ClassesPage";
 import SignInPage from "./pages/GeneralPages/SignInPage";
 import SignUpPage from "./pages/GeneralPages/SignUpPage";
+import NotFound from "./pages/GeneralPages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         element: <Grid></Grid>,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound></NotFound>,
   },
 ]);
 
