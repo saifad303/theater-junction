@@ -9,6 +9,10 @@ import Form from "./pages/adminPages/Form.jsx";
 import List from "./pages/adminPages/List.jsx";
 import Grid from "./pages/adminPages/Grid.jsx";
 import HomePage from "./pages/GeneralPages/HomePage";
+import InstructorPage from "./pages/GeneralPages/InstructorPage";
+import ClassesPage from "./pages/GeneralPages/ClassesPage";
+import SignInPage from "./pages/GeneralPages/SignInPage";
+import SignUpPage from "./pages/GeneralPages/SignUpPage";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +22,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage></HomePage>,
+      },
+      {
+        path: "/instructor",
+        element: <InstructorPage></InstructorPage>,
+      },
+      {
+        path: "/classes",
+        element: <ClassesPage></ClassesPage>,
+      },
+      {
+        path: "/sign-in",
+        element: <SignInPage></SignInPage>,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUpPage></SignUpPage>,
       },
     ],
   },

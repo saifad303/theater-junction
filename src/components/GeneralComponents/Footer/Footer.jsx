@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-screen-xl mx-auto px-4  md:px-8">
         <div className="justify-between md:flex">
           <div className="space-y-6">
-            <img src="/images/logo.png" className=" w-48" />
+            <img src="/images/logo.png" className=" w-60" />
             <p className="max-w-md">
               Toy land emporium unleash Your Imagination and Embark on an
               Extraordinary Journey of Play, Wonder, and Delight
