@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SignInPage = () => {
   return (
-    <main className="w-full h-screen flex flex-col items-center justify-center bg-gray-50 sm:px-4">
+    <main className="w-full py-28  flex flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
         <div className="text-center">
           <img src="/images/title-logo.png" width={150} className="mx-auto" />
@@ -12,12 +13,9 @@ const SignInPage = () => {
             </h3>
             <p className="text-gray-500">
               Don't have an account?{" "}
-              <a
-                href="javascript:void(0)"
-                className="font-medium text-[#CF1164]"
-              >
+              <Link to="/sign-up" className="font-medium text-[#CF1164]">
                 Sign up
-              </a>
+              </Link>
             </p>
           </div>
         </div>
