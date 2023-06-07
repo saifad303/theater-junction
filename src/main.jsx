@@ -8,11 +8,18 @@ import Dashboard from "./pages/adminPages/Dashboard.jsx";
 import Form from "./pages/adminPages/Form.jsx";
 import List from "./pages/adminPages/List.jsx";
 import Grid from "./pages/adminPages/Grid.jsx";
+import HomePage from "./pages/GeneralPages/HomePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    children: [
+      {
+        path: "/",
+        element: <HomePage></HomePage>,
+      },
+    ],
   },
   {
     path: "/admin",

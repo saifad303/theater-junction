@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Menu from "./Menu";
+import { Link, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const [state, setState] = useState(false);
+  const location = useLocation();
 
   return (
     <nav className="bg-white border-b w-full md:static md:text-sm md:border-none">
@@ -26,14 +28,9 @@ const NavBar = () => {
                 <path d="M10,20A10,10,0,1,0,0,10,10,10,0,0,0,10,20ZM8.711,4.3l5.7,5.766L8.7,15.711,7.3,14.289l4.289-4.242L7.289,5.7Z" />
               </svg>
             </button>
-            <a href="">
-              <img
-                src="https://www.floatui.com/logo.svg"
-                width={120}
-                height={50}
-                alt="Float UI logo"
-              />
-            </a>
+            <Link to="/">
+              <img src="/images/logo.png" width={200} alt="Float UI logo" />
+            </Link>
           </div>
           <div className="md:hidden">
             <button
