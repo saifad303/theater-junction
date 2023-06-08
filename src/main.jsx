@@ -14,6 +14,8 @@ import ClassesPage from "./pages/GeneralPages/ClassesPage";
 import SignInPage from "./pages/GeneralPages/SignInPage";
 import SignUpPage from "./pages/GeneralPages/SignUpPage";
 import NotFound from "./pages/GeneralPages/NotFound";
+import MySelectedClasses from "./pages/adminPages/MySelectedClasses";
+import MyEnrolledClasses from "./pages/adminPages/MyEnrolledClasses";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
       {
         path: "/admin/grid",
         element: <Grid></Grid>,
+      },
+      {
+        path: "/admin/selected-classes",
+        element: <MySelectedClasses></MySelectedClasses>,
+      },
+      {
+        path: "/admin/enrolled-classes",
+        element: <MyEnrolledClasses></MyEnrolledClasses>,
       },
     ],
   },
