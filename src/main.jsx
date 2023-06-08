@@ -18,6 +18,8 @@ import MySelectedClasses from "./pages/adminPages/MySelectedClasses";
 import MyEnrolledClasses from "./pages/adminPages/MyEnrolledClasses";
 import AddClass from "./pages/adminPages/AddClass";
 import MyClasses from "./pages/adminPages/MyClasses";
+import ManageClasses from "./pages/adminPages/ManageClasses";
+import ManageUsers from "./pages/adminPages/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +83,14 @@ const router = createBrowserRouter([
       {
         path: "/admin/my-class",
         element: <MyClasses></MyClasses>,
+      },
+      {
+        path: "/admin/manage-classes",
+        element: <ManageClasses></ManageClasses>,
+      },
+      {
+        path: "/admin/manage-users",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },
