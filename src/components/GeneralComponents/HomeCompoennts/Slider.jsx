@@ -18,31 +18,37 @@ const Slider = () => {
   return (
     <AwesomeSlider className="h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
       <div
+        className="brightness-75"
         style={{
           backgroundImage: `url(${slides[0].url})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
+          filter: "brightness(.5)",
         }}
       >
         1
       </div>
       <div
+        className="brightness-75"
         style={{
           backgroundImage: `url(${slides[1].url})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
+          filter: "brightness(.5)",
         }}
       >
         1
       </div>
       <div
+        className="brightness-75"
         style={{
           backgroundImage: `url(${slides[2].url})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
+          filter: "brightness(.5)",
         }}
       >
         1
