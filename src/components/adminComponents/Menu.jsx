@@ -95,7 +95,7 @@ const Menu = () => {
         </ActiveRoute>
       </li>
       <li>
-        <ActiveRoute to="/admin/enrolled-classes">
+        <ActiveRoute to="/admin/add-class">
           <svg
             className="w-6 h-6 text-gray-500"
             fill="currentColor"
@@ -120,7 +120,7 @@ const Menu = () => {
         </ActiveRoute>
       </li>
       <li>
-        <ActiveRoute to="/admin/enrolled-classes">
+        <ActiveRoute to="/admin/my-class">
           <svg
             className="w-6 h-6 text-gray-500"
             fill="currentColor"
