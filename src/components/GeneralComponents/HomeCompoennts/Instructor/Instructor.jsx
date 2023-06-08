@@ -5,7 +5,8 @@ const Instructor = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="container px-6 py-10 mx-auto">
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
-          Our Executive Team
+          Our Executive Contact{" "}
+          <span class=" text-white bg-[#F89A2E] px-2">Team</span>
         </h1>
 
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
