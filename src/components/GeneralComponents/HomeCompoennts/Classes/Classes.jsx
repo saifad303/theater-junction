@@ -6,7 +6,7 @@ const Classes = () => {
       <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl dark:text-white">
           explore our awesome{" "}
-          <span class=" text-white bg-[#F89A2E] px-2">Classes</span>
+          <span class=" text-white bg-[#F89A2E] px-2">Services</span>
         </h1>
 
         <p class="mt-4 text-gray-500 text-center xl:mt-6 dark:text-gray-300">
