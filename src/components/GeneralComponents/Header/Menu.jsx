@@ -17,7 +17,7 @@ const Menu = () => {
         <ActiveLink to="/">Home</ActiveLink>
       </li>
       <li className="text-gray-700">
-        <ActiveLink to="/instructor">Instructor</ActiveLink>
+        <ActiveLink to="/instructor">Instructors</ActiveLink>
       </li>
       <li className="text-gray-700 ">
         <ActiveLink to="/classes">Classes</ActiveLink>

@@ -17,7 +17,7 @@ const Footer = () => {
                 <Link to="/">Home</Link>
               </li>
               <li className=" hover:text-[#CF1164] duration-150">
-                <Link to="/toys">Instructor</Link>
+                <Link to="/toys">Instructors</Link>
               </li>
               <li className=" hover:text-[#CF1164] duration-150">
                 <Link to="/blogs">Classes</Link>
