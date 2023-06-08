@@ -4,15 +4,17 @@ const Classes = () => {
   return (
     <section class="bg-white dark:bg-gray-900">
       <div class="container px-6 py-10 mx-auto">
-        <h1 class="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl dark:text-white">
-          explore our awesome{" "}
-          <span class=" text-white bg-[#F89A2E] px-2">Services</span>
-        </h1>
+        <div>
+          <h1 class="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl dark:text-white">
+            explore our awesome{" "}
+            <span class=" text-white bg-[#F89A2E] px-2">Services</span>
+          </h1>
 
-        <p class="mt-4 text-gray-500 text-center xl:mt-6 dark:text-gray-300">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum quam
-          voluptatibus
-        </p>
+          <p class="mt-4 text-gray-500 text-center xl:mt-6 dark:text-gray-300">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum
+            quam voluptatibus
+          </p>
+        </div>
 
         <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
           {[1, 2, 3, 4, 5, 6].map((value, idx) => (
