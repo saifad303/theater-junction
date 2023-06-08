@@ -9,9 +9,15 @@ const HomePage = () => {
   return (
     <div>
       <Slider></Slider>
-      <Classes></Classes>
-      <ClassesSection></ClassesSection>
-      <Instructor></Instructor>
+      <div className=" py-6">
+        <Classes></Classes>
+      </div>
+      <div className=" py-8">
+        <ClassesSection></ClassesSection>
+      </div>
+      <div className=" py-8">
+        <Instructor></Instructor>
+      </div>
       <ContactForm></ContactForm>
     </div>
   );

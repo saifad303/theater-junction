@@ -7,7 +7,7 @@ const ClassesPage = () => {
         <div className="max-w-xl mx-auto sm:text-center">
           <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
             Explore Our{" "}
-            <span class=" text-white bg-[#F89A2E] px-2">Classes</span>
+            <span className=" text-white bg-[#F89A2E] px-2">Classes</span>
           </h3>
           <p className="text-gray-600 mt-3">
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -18,7 +18,10 @@ const ClassesPage = () => {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* ...start... */}
             {[1, 1, 1, 1, 1, 1].map((val, idx) => (
-              <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-xl dark:bg-gray-900 dark:text-gray-100">
+              <div
+                key={idx}
+                className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-xl dark:bg-gray-900 dark:text-gray-100"
+              >
                 <div className="flex space-x-4">
                   <img
                     alt=""

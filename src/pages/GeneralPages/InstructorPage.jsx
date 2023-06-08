@@ -45,7 +45,7 @@ const InstructorPage = () => {
         <div className="max-w-xl mx-auto sm:text-center">
           <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
             Meet Our{" "}
-            <span class=" text-white bg-[#F89A2E] px-2">Instructor</span>
+            <span className=" text-white bg-[#F89A2E] px-2">Instructor</span>
           </h3>
           <p className="text-gray-600 mt-3">
             Lorem Ipsum is simply dummy text of the printing and typesetting

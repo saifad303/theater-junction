@@ -5,8 +5,8 @@ const Instructor = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="container px-6 py-10 mx-auto">
         <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
-          Our Executive Contact{" "}
-          <span class=" text-white bg-[#F89A2E] px-2">Team</span>
+          Meet Our{" "}
+          <span className=" text-white bg-[#F89A2E] px-2">Instructor</span>
         </h1>
 
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
@@ -17,7 +17,10 @@ const Instructor = () => {
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((value, idx) => (
-            <div className="flex flex-col items-center p-8 transition-colors duration-300 transform cursor-pointer group hover:bg-[#F89A2E] rounded-xl">
+            <div
+              key={idx}
+              className="flex flex-col items-center p-8 transition-colors duration-300 transform cursor-pointer group hover:bg-[#F89A2E] rounded-xl"
+            >
               <img
                 className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
                 src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
