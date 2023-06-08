@@ -6,44 +6,44 @@ const InstructorPage = () => {
       avatar:
         "https://images.unsplash.com/photo-1579017331263-ef82f0bbc748?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80",
       name: "Martiana dialan",
-      title: "Product designer",
+      title: "example@email.com",
     },
     {
       avatar:
         "https://images.unsplash.com/photo-1623605931891-d5b95ee98459?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80",
       name: "Micheal colorand",
-      title: "Software engineer",
+      title: "example@email.com",
     },
     {
       avatar:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       name: "Brown Luis",
-      title: "Full stack engineer",
+      title: "example@email.com",
     },
     {
       avatar:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       name: "Lysa sandiago",
-      title: "Head of designers",
+      title: "example@email.com",
     },
     {
       avatar:
         "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       name: "Daniel martin",
-      title: "Product designer",
+      title: "example@email.com",
     },
     {
       avatar:
         "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
       name: "Vicky tanson",
-      title: "Product manager",
+      title: "example@email.com",
     },
   ];
   return (
     <section className="py-32">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         <div className="max-w-xl mx-auto sm:text-center">
-          <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+          <h3 className="text-gray-700 text-3xl font-semibold sm:text-4xl">
             Meet Our{" "}
             <span className=" text-white bg-[#F89A2E] px-2">Instructor</span>
           </h3>
@@ -68,9 +68,11 @@ const InstructorPage = () => {
                     <h4 className="text-lg text-gray-700 font-semibold">
                       {item.name}
                     </h4>
-                    <p className="text-indigo-600">{item.title}</p>
+                    <p className="text-[#CF1164] font-medium">{item.title}</p>
                   </div>
-                  <div>Class: 10</div>
+                  <span class="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
+                    Class: 10
+                  </span>
                 </div>
               </li>
             ))}
