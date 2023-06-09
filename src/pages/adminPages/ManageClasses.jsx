@@ -120,13 +120,13 @@ const ManageClasses = () => {
                         </td>
                       </td>
                       <td className="px-6 py-4 whitespace-wrap">
-                        <p className=" w-52">
+                        <p className=" w-40">
                           Lorem ipsum, dolor sit amet consectetur adipisicing
                           elit.
                         </p>
                       </td>
                       <td className="px-6 py-4 whitespace-wrap">
-                        <button className="px-5 py-3 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">
+                        <button className=" w-32 px-4 py-3 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">
                           Delete course
                         </button>
                       </td>

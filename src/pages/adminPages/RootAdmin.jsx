@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Menu from "../../components/adminComponents/Menu";
 import Header from "../../components/GeneralComponents/Header/NavBar";
+import { useAuthProvider } from "../../context/AuthProvider";
 
 const RootAdmin = () => {
   const [isProfileShow, setIsProfileShow] = useState(false);
+  const { name } = useAuthProvider();
+  console.log(name);
   const navigate = useNavigate();
 
   useEffect(() => {
