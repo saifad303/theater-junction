@@ -6,30 +6,35 @@ const NavBar = () => {
   const [state, setState] = useState(false);
   const location = useLocation();
 
+  const adminPage = location.pathname.split("/")[1];
+
   return (
     <nav className="bg-white border-b w-full md:static md:text-sm md:border-none">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <div className=" flex items-center gap-2">
-            <button
-              data-drawer-target="logo-sidebar"
-              data-drawer-toggle="logo-sidebar"
-              aria-controls="logo-sidebar"
-              type="button"
-              className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  "
-            >
-              <span className="sr-only">Open sidebar</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                viewBox="0 0 20 20"
+            {adminPage === "admin" && (
+              <button
+                data-drawer-target="logo-sidebar"
+                data-drawer-toggle="logo-sidebar"
+                aria-controls="logo-sidebar"
+                type="button"
+                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200  "
               >
-                <path d="M10,20A10,10,0,1,0,0,10,10,10,0,0,0,10,20ZM8.711,4.3l5.7,5.766L8.7,15.711,7.3,14.289l4.289-4.242L7.289,5.7Z" />
-              </svg>
-            </button>
+                <span className="sr-only">Open sidebar</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10,20A10,10,0,1,0,0,10,10,10,0,0,0,10,20ZM8.711,4.3l5.7,5.766L8.7,15.711,7.3,14.289l4.289-4.242L7.289,5.7Z" />
+                </svg>
+              </button>
+            )}
+
             <Link to="/">
-              <img src="/images/logo.png" width={200} alt="Float UI logo" />
+              <img src="/images/logo.png" width={200} alt="" />
             </Link>
           </div>
           <div className="md:hidden">

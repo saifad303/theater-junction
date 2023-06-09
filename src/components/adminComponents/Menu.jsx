@@ -27,9 +27,9 @@ const Menu = () => {
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 492.049 492.049"
-            xml:space="preserve"
+            xmlSpace="preserve"
           >
             <g>
               <path
@@ -80,9 +80,9 @@ const Menu = () => {
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 310 310"
-            xml:space="preserve"
+            xmlSpace="preserve"
           >
             <path
               d="M300.606,159.727l-45.333-45.333c-5.857-5.858-15.355-5.858-21.213,0L225,123.454V15c0-8.284-6.716-15-15-15H20
@@ -102,9 +102,9 @@ const Menu = () => {
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 292.377 292.377"
-            xml:space="preserve"
+            xmlSpace="preserve"
           >
             <g>
               <path
@@ -143,9 +143,9 @@ const Menu = () => {
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 436.558 436.558"
-            xml:space="preserve"
+            xmlSpace="preserve"
           >
             <path
               d="M335.654,239.048l-55.617-16.857c-1.344-4.064-4.323-7.579-8.491-10.555c4.585-5.094,8.455-10.251,11.397-14.517
@@ -182,8 +182,8 @@ const Menu = () => {
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 297 297"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            enable-background="new 0 0 297 297"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            enableBackground="new 0 0 297 297"
           >
             <g>
               <path d="m148.85,58.072c15.466,0 28.047-12.582 28.047-28.047 0-15.465-12.582-28.047-28.047-28.047-15.465,0-28.047,12.582-28.047,28.047 0,15.466 12.582,28.047 28.047,28.047z" />

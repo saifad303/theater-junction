@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Menu from "../../components/adminComponents/Menu";
 import Header from "../../components/GeneralComponents/Header/NavBar";
-import Footer from "../../components/GeneralComponents/Footer/Footer";
 
 const RootAdmin = () => {
   const [isProfileShow, setIsProfileShow] = useState(false);

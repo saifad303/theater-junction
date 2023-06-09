@@ -70,7 +70,7 @@ const InstructorPage = () => {
                     </h4>
                     <p className="text-[#CF1164] font-medium">{item.title}</p>
                   </div>
-                  <span class="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
+                  <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
                     Class: 10
                   </span>
                 </div>

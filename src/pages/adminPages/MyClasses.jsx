@@ -76,17 +76,17 @@ const MyClasses = () => {
                         {item.salary}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span class="bg-[#ffdfbb] text-[#ff8800] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                        <span className="bg-[#ffdfbb] text-[#ff8800] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
                           Pending
                         </span>
                         <br />
                         <br />
-                        <span class="border border-[#54C6C4] text-[#54C6C4] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                        <span className="border border-[#54C6C4] text-[#54C6C4] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
                           Accepted
                         </span>
                         <br />
                         <br />
-                        <span class="border border-[#CF1164] text-[#CF1164] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                        <span className="border border-[#CF1164] text-[#CF1164] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
                           Denied
                         </span>
                       </td>

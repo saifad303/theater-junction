@@ -54,14 +54,16 @@ const ClassesPage = () => {
                     ius, vim ad illud atqui apeirian...
                   </p>
                 </div>
-                <span class="bg-[#54C6C4] text-white text-base font-medium mr-2 px-2.5 py-0.5 rounded  w-44">
+                <span className="bg-[#54C6C4] text-white text-base font-medium mr-2 px-2.5 py-0.5 rounded  w-44">
                   Available seats: 100
                 </span>
-                <div class="flex items-center justify-between">
-                  <span class="text-3xl font-bold text-gray-700 ">$599</span>
+                <div className="flex items-center justify-between">
+                  <span className="text-3xl font-bold text-gray-700 ">
+                    $599
+                  </span>
                   <a
                     href="#"
-                    class="text-white bg-[#CF1164] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                    className="text-white bg-[#CF1164] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                   >
                     Add to cart
                   </a>
