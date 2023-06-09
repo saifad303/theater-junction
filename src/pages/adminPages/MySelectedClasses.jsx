@@ -37,8 +37,8 @@ const MySelectedClasses = () => {
   return (
     <div className="p-4 sm:ml-64">
       <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg  mt-14">
-        <div className="mb-4 rounded  py-14">
-          <div className="max-w-screen-xl mx-auto px-4">
+        <div className="mb-4 rounded py-14">
+          <div className=" w-full mx-auto px-4">
             <div className="max-w-lg">
               <h3 className="text-gray-700 text-xl font-semibold sm:text-3xl">
                 My selected classes
