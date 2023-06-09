@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Menu from "../../components/adminComponents/Menu";
 import Header from "../../components/GeneralComponents/Header/NavBar";
+import Footer from "../../components/GeneralComponents/Footer/Footer";
 
 const RootAdmin = () => {
   const [isProfileShow, setIsProfileShow] = useState(false);
@@ -17,7 +18,7 @@ const RootAdmin = () => {
         <Header></Header>
       </nav>
 
-      <div className=" pt-8">
+      <div className=" pt-8 overflow-y-auto">
         <aside
           id="logo-sidebar"
           className="fixed top-0 left-0 z-40 w-64 h-screen pt-28 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 "
