@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuthProvider } from "../../context/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const SignUpPage = () => {
+  const [firebaseError, setFirebaseError] = useState("");
   const navigate = useNavigate();
   const {
+    reset,
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = (data) => console.log(data);
-
-  console.log(errors);
 
   const {
     googleSignInProviderHandler,
@@ -23,9 +23,83 @@ const SignUpPage = () => {
     updateProfileProvider,
   } = useAuthProvider();
 
+  const onSubmit = (data) => {
+    createUserProvider(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+        updateProfileProvider(data.name, data.photoURL).then(() => {
+          setFirebaseError("");
+          const saveUser = { name: data.name, email: data.email };
+
+          axios
+            .post(
+              "http://localhost:5000/users",
+              {
+                data: saveUser,
+              },
+              {
+                headers: {
+                  "content-type": "application/json",
+                },
+              }
+            )
+            .then((res) => {
+              if (res.data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "User created successfully.",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
+        });
+      })
+      .catch((err) => {
+        console.log(err.message.split(":")[1]);
+        setFirebaseError(err.message.split(":")[1]);
+      });
+  };
+
+  console.log(errors);
+
   const googleSignInHandler = () => {
     googleSignInProviderHandler().then((result) => {
       console.log(result.user);
+      const saveUser = {
+        name: result.user.displayName,
+        email: result.user.email,
+      };
+      axios
+        .post(
+          "http://localhost:5000/users",
+          {
+            data: saveUser,
+          },
+          {
+            headers: {
+              "content-type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data.insertedId) {
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "User created successfully.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          }
+        });
       setSignedInUser(result.user);
       navigate("/");
     });
@@ -49,6 +123,15 @@ const SignUpPage = () => {
           </div>
         </div>
         <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
+          {firebaseError && (
+            <div
+              class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              role="alert"
+            >
+              {firebaseError}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
               <label className="font-medium">Name</label>

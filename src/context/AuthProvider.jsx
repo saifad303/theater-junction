@@ -29,8 +29,7 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const createUserProvider = (credentials) => {
-    const { name, photoUrl, email, password } = credentials;
+  const createUserProvider = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
