@@ -1,7 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useAuthProvider } from "../../context/AuthProvider";
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
+
+  console.log(errors);
+
+  const {
+    googleSignInProviderHandler,
+    setSignedInUser,
+    createUserProvider,
+    updateProfileProvider,
+  } = useAuthProvider();
+
+  const googleSignInHandler = () => {
+    googleSignInProviderHandler().then((result) => {
+      console.log(result.user);
+      setSignedInUser(result.user);
+      navigate("/");
+    });
+  };
+
   return (
     <main className="w-full py-28 flex flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
@@ -20,60 +49,111 @@ const SignUpPage = () => {
           </div>
         </div>
         <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
               <label className="font-medium">Name</label>
               <input
+                {...register("name", { required: true })}
+                name="name"
                 type="text"
-                required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-[#CF1164] shadow-sm rounded-lg"
               />
+              {errors.name?.type === "required" && (
+                <p className="text-red-600">Name is required</p>
+              )}
             </div>
             <div>
               <label className="font-medium">Photo URL</label>
               <input
+                {...register("photoURL", { required: true })}
                 type="text"
-                required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-[#CF1164] shadow-sm rounded-lg"
               />
+              {errors.photoURL?.type === "required" && (
+                <p className="text-red-600">photo URL is required</p>
+              )}
             </div>
             <div>
               <label className="font-medium">Email</label>
               <input
+                {...register("email", { required: true })}
+                name="email"
                 type="email"
-                required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-[#CF1164] shadow-sm rounded-lg"
               />
+              {errors.email?.type === "required" && (
+                <p className="text-red-600">Email is required</p>
+              )}
             </div>
             <div>
               <label className="font-medium">Password</label>
               <input
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
+                })}
                 type="password"
-                required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-[#CF1164] shadow-sm rounded-lg"
               />
+              {errors.password?.type === "required" && (
+                <p className="text-red-600">Password is required</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-600">Password must be 6 characters</p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-red-600">
+                  Password must be less than 20 characters
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-600">
+                  Password must have one Uppercase , one number and one special
+                  character.
+                </p>
+              )}
             </div>
             <div>
               <label className="font-medium">Confirm Password</label>
               <input
+                {...register("confirm_password", {
+                  required: true,
+                  validate: (val) => {
+                    if (watch("password") != val) {
+                      return "Your passwords do no match";
+                    }
+                  },
+                })}
                 type="password"
-                required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-[#CF1164] shadow-sm rounded-lg"
               />
+              {errors.confirm_password && (
+                <p className="text-red-600">
+                  {errors.confirm_password.message}
+                </p>
+              )}
             </div>
-            <button className="w-full px-4 py-2 text-white font-medium bg-[#CF1164]   rounded-lg duration-150">
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white font-medium bg-[#CF1164] rounded-lg duration-150"
+            >
               Create account
             </button>
           </form>
           <div className="mt-5">
-            <button className="w-full flex items-center justify-center gap-x-3 py-2.5 mt-5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100">
+            <button
+              onClick={googleSignInHandler}
+              className="w-full flex items-center justify-center gap-x-3 py-2.5 mt-5 border rounded-lg text-sm font-medium  duration-150 "
+            >
               <svg
                 className="w-5 h-5"
                 viewBox="0 0 48 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_17_40)">
+                <g clipPath="url(#clip0_17_40)">
                   <path
                     d="M47.532 24.5528C47.532 22.9214 47.3997 21.2811 47.1175 19.6761H24.48V28.9181H37.4434C36.9055 31.8988 35.177 34.5356 32.6461 36.2111V42.2078H40.3801C44.9217 38.0278 47.532 31.8547 47.532 24.5528Z"
                     fill="#4285F4"

@@ -1,7 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuthProvider } from "../../context/AuthProvider";
 
 const SignInPage = () => {
+  const {
+    googleSignInProviderHandler,
+    setSignedInUser,
+    createUserProvider,
+    updateProfileProvider,
+  } = useAuthProvider();
+
+  const googleSignInHandler = () => {
+    googleSignInProviderHandler().then((result) => {
+      console.log(result.user);
+      setSignedInUser(result.user);
+      // navigate("/");
+    });
+  };
+
   return (
     <main className="w-full py-28  flex flex-col items-center justify-center bg-gray-50 sm:px-4">
       <div className="w-full space-y-6 text-gray-600 sm:max-w-md">
@@ -49,7 +65,10 @@ const SignInPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-x-3">
+          <div
+            onClick={googleSignInHandler}
+            className="grid grid-cols-1 gap-x-3"
+          >
             <button className="flex items-center justify-center py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
               <svg
                 className="w-5 h-5"
@@ -57,7 +76,7 @@ const SignInPage = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_17_40)">
+                <g clipPath="url(#clip0_17_40)">
                   <path
                     d="M47.532 24.5528C47.532 22.9214 47.3997 21.2811 47.1175 19.6761H24.48V28.9181H37.4434C36.9055 31.8988 35.177 34.5356 32.6461 36.2111V42.2078H40.3801C44.9217 38.0278 47.532 31.8547 47.532 24.5528Z"
                     fill="#4285F4"

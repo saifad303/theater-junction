@@ -1,4 +1,5 @@
 import React from "react";
+import FeedbackModal from "../../components/adminComponents/FeedbackModal";
 
 const ManageClasses = () => {
   const tableItems = [
@@ -36,6 +37,7 @@ const ManageClasses = () => {
 
   return (
     <div className=" p-4 sm:ml-64">
+      <FeedbackModal></FeedbackModal>
       <div className=" p-4 border-2 border-gray-200 border-dashed rounded-lg  mt-14">
         <div className="mb-4 rounded  py-14 ">
           <div className="w-full mx-auto">
@@ -124,6 +126,13 @@ const ManageClasses = () => {
                           Lorem ipsum, dolor sit amet consectetur adipisicing
                           elit.
                         </p>
+                        <button
+                          data-modal-target="defaultModal"
+                          data-modal-toggle="defaultModal"
+                          className=" mt-2 w-28 px-1 py-1 text-white duration-150 bg-[#54C6C4] rounded-lg  active:shadow-lg text-sm"
+                        >
+                          Add Feedback
+                        </button>
                       </td>
                       <td className="px-6 py-4 whitespace-wrap">
                         <button className=" w-32 px-4 py-3 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">

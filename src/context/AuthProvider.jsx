@@ -61,7 +61,6 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const value = {
-    name: "Saif Ahmed",
     googleSignInProviderHandler,
     signedInUser,
     setSignedInUser,

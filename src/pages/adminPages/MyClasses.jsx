@@ -97,7 +97,7 @@ const MyClasses = () => {
                         </p>
                       </td>
                       <td className="px-6 py-4 whitespace-wrap">
-                        <button className="px-5 py-3 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">
+                        <button className="px-5 py-3 w-32 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">
                           Delete course
                         </button>
                       </td>

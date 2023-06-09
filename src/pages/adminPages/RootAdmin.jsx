@@ -6,8 +6,7 @@ import { useAuthProvider } from "../../context/AuthProvider";
 
 const RootAdmin = () => {
   const [isProfileShow, setIsProfileShow] = useState(false);
-  const { name } = useAuthProvider();
-  console.log(name);
+
   const navigate = useNavigate();
 
   useEffect(() => {
