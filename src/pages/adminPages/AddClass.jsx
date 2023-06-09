@@ -5,50 +5,41 @@ const AddClass = () => {
     <div className="p-4 sm:ml-64">
       <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg  mt-14">
         <div className=" p-10 flex items-center justify-center  mb-4 rounded bg-gray-50 ">
-          <section class=" w-full p-6 mx-auto bg-[#54C6C4] rounded-md shadow-md dark:bg-gray-800 mt-20">
-            <h1 class="text-3xl font-bold text-white capitalize dark:text-white">
+          <section class=" w-full p-6 mx-auto bg-[#54C6C4] rounded-md shadow-md  mt-20">
+            <h1 class="text-3xl font-bold text-white capitalize ">
               Add course
             </h1>
             <form>
               <div class="grid grid-cols-1 gap-6 mt-4 lg:grid-cols-2">
                 <div>
-                  <label
-                    class="text-white text-xl font-medium dark:text-gray-200"
-                    for="username"
-                  >
+                  <label class="text-white text-xl font-medium " for="username">
                     Class Name
                   </label>
                   <input
                     id="username"
                     type="text"
-                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:outline-none focus:ring"
                   />
                 </div>
 
                 <div>
-                  <label
-                    class="text-white text-xl font-medium dark:text-gray-200"
-                    for="username"
-                  >
+                  <label class="text-white text-xl font-medium " for="username">
                     Available seats
                   </label>
                   <input
                     id="emailAddress"
                     type="number"
-                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md  focus:outline-none focus:ring"
                   />
                 </div>
                 <div>
-                  <label
-                    class="text-white text-xl font-medium dark:text-gray-200"
-                    for="username"
-                  >
+                  <label class="text-white text-xl font-medium " for="username">
                     Class Description
                   </label>
                   <textarea
                     id="textarea"
                     type="textarea"
-                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring h-[130px]"
+                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:border-blue-500  focus:outline-none focus:ring h-[130px]"
                   ></textarea>
                 </div>
                 <div>

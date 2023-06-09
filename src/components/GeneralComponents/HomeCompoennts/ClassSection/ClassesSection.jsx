@@ -4,12 +4,12 @@ const ClassesSection = () => {
   return (
     <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
       <div className=" mb-10">
-        <h1 className="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl dark:text-white">
+        <h1 className="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl ">
           explore our awesome{" "}
           <span className=" text-white bg-[#F89A2E] px-2">Classes</span>
         </h1>
 
-        <p className="mt-4 text-gray-500 text-center xl:mt-6 dark:text-gray-300">
+        <p className="mt-4 text-gray-500 text-center xl:mt-6 ">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum quam
           voluptatibus
         </p>

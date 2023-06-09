@@ -2,15 +2,15 @@ import React from "react";
 
 const Classes = () => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white ">
       <div className="container px-6 py-10 mx-auto">
         <div>
-          <h1 className="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl dark:text-white">
+          <h1 className="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl ">
             explore our awesome{" "}
             <span className=" text-white bg-[#F89A2E] px-2">Services</span>
           </h1>
 
-          <p className="mt-4 text-gray-500 text-center xl:mt-6 dark:text-gray-300">
+          <p className="mt-4 text-gray-500 text-center xl:mt-6 ">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum
             quam voluptatibus
           </p>
@@ -20,9 +20,9 @@ const Classes = () => {
           {[1, 2, 3, 4, 5, 6].map((value, idx) => (
             <div
               key={idx}
-              className="p-8 space-y-3 border-2 border-[#CF1164] dark:border-blue-300 rounded-xl group hover:border-[#F89A2E]"
+              className="p-8 space-y-3 border-2 border-[#CF1164]  rounded-xl group hover:border-[#F89A2E]"
             >
-              <span className="inline-block text-[#CF1164] group-hover:text-[#F89A2E] dark:text-[#CF1164]">
+              <span className="inline-block text-[#CF1164] group-hover:text-[#F89A2E] ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-8 h-8"
@@ -39,11 +39,11 @@ const Classes = () => {
                 </svg>
               </span>
 
-              <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+              <h1 className="text-xl font-semibold text-gray-700 capitalize ">
                 Simple & clean designs
               </h1>
 
-              <p className="text-gray-500 dark:text-gray-300">
+              <p className="text-gray-500 ">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Provident ab nulla quod dignissimos vel non corrupti doloribus
                 voluptatum eveniet
@@ -51,7 +51,7 @@ const Classes = () => {
 
               <a
                 href="#"
-                className="inline-flex p-2 text-[#CF1164] group-hover:text-white capitalize transition-colors duration-300 transform bg-[#eecada] rounded-full rtl:-scale-x-100 dark:bg-blue-500 dark:text-white group-hover:bg-[#F89A2E]"
+                className="inline-flex p-2 text-[#CF1164] group-hover:text-white capitalize transition-colors duration-300 transform bg-[#eecada] rounded-full rtl:-scale-x-100  group-hover:bg-[#F89A2E]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
