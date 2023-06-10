@@ -1,23 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useAuthProvider } from "../context/AuthProvider";
+import axios from "axios";
 
-const useInstructor = () => {
+const useAdmin = () => {
   const { signedInUser, apiPrefixLink } = useAuthProvider();
-  const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
-    queryKey: ["isInstructor", signedInUser?.email],
+  const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
+    queryKey: ["isAdmin", signedInUser?.email],
     queryFn: async () => {
       const res = await axios.get(
-        `${apiPrefixLink}users/instructor/${signedInUser?.email}`,
+        `${apiPrefixLink}users/admin/${signedInUser?.email}`,
         {
           headers: {
             authorization: `${localStorage.getItem("access-token")}`,
           },
         }
       );
-      return res.data.instructor;
+      return res.data.admin;
     },
   });
-  return [isInstructor, isInstructorLoading];
+  return [isAdmin, isAdminLoading];
 };
-export default useInstructor;
+export default useAdmin;
