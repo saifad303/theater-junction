@@ -45,7 +45,7 @@ const SignInPage = () => {
           setSignedInUser(result.user);
           reset();
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "User signed in.",
             showConfirmButton: false,

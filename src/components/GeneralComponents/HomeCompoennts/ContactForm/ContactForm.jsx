@@ -20,7 +20,7 @@ const ContactForm = () => {
         <form action="#" className="space-y-8">
           <div>
             <label
-              htmlFor="email"
+              htmlfor="email"
               className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Your email
@@ -35,7 +35,7 @@ const ContactForm = () => {
           </div>
           <div>
             <label
-              htmlFor="subject"
+              htmlfor="subject"
               className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Subject
@@ -50,7 +50,7 @@ const ContactForm = () => {
           </div>
           <div className="sm:col-span-2">
             <label
-              htmlFor="message"
+              htmlfor="message"
               className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Your message

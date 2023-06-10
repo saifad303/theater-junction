@@ -9,6 +9,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../firebase.config";
+import axios from "axios";
 
 const AuthContext = createContext(null);
 
@@ -27,6 +28,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const signOutProviderHandler = () => {
+    localStorage.removeItem("access-token");
     return signOut(auth);
   };
 
@@ -46,7 +48,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const setTokenLocalStorage = (token) => {
-    localStorage.setItem("access-token", token);
+    localStorage.setItem("access-token", `bearer ${token}`);
   };
 
   useEffect(() => {

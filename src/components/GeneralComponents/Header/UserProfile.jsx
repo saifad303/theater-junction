@@ -1,6 +1,8 @@
 import React from "react";
+import { useAuthProvider } from "../../../context/AuthProvider";
 
 const UserProfile = () => {
+  const { signOutProviderHandler } = useAuthProvider();
   return (
     <div className="space-y-3 items-center gap-x-6 md:flex md:space-y-0">
       <li>
@@ -12,12 +14,12 @@ const UserProfile = () => {
         </button>
       </li>
       <li>
-        <a
-          href=""
-          className="block py-3 px-4 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline"
+        <button
+          onClick={signOutProviderHandler}
+          className="block py-3 px-4 font-medium text-center text-white bg-[#CF1164] active:shadow-none rounded-lg shadow md:inline"
         >
-          Sign in
-        </a>
+          Sign out
+        </button>
       </li>
     </div>
   );
