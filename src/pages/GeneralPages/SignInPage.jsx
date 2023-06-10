@@ -10,12 +10,13 @@ const SignInPage = () => {
     googleSignInProviderHandler,
     setSignedInUser,
     signInWithEmailProvider,
+    apiPrefixLink,
+    setTokenLocalStorage,
   } = useAuthProvider();
   const {
     reset,
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const [firebaseError, setFirebaseError] = useState("");
@@ -23,12 +24,14 @@ const SignInPage = () => {
 
   const googleSignInHandler = () => {
     googleSignInProviderHandler().then((result) => {
-      console.log(result.user);
+      // console.log(result.user);
       axios
         .post(
-          "http://localhost:5000/jwt",
+          `${apiPrefixLink}users`,
           {
-            data: { email: result.user.email },
+            data: {
+              email: result.user.email,
+            },
           },
           {
             headers: {
@@ -37,20 +40,18 @@ const SignInPage = () => {
           }
         )
         .then((res) => {
-          const token = res.data.token;
-          if (token) {
-            reset();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "User successfully signed in with google.",
-              showConfirmButton: false,
-              timer: 2000,
-            });
-            setSignedInUser(result.user);
-            localStorage.setItem("access-token", token);
-            navigate("/");
-          }
+          console.log(res.data);
+          setTokenLocalStorage(res.data.token);
+          setSignedInUser(result.user);
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User signed in.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
         });
     });
   };
@@ -62,13 +63,14 @@ const SignInPage = () => {
         console.log(loggedUser);
 
         setFirebaseError("");
-        const saveUser = { email: data.email };
 
         axios
           .post(
-            "http://localhost:5000/jwt",
+            `${apiPrefixLink}users`,
             {
-              data: saveUser,
+              data: {
+                email: result.user.email,
+              },
             },
             {
               headers: {
@@ -77,20 +79,18 @@ const SignInPage = () => {
             }
           )
           .then((res) => {
-            const token = res.data.token;
-            if (token) {
-              reset();
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "User successfully signed in.",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              setSignedInUser(result.user);
-              localStorage.setItem("access-token", token);
-              navigate("/");
-            }
+            console.log(res.data);
+            setTokenLocalStorage(res.data.token);
+            setSignedInUser(result.user);
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "User successfully signed in.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
           });
       })
       .catch((err) => {
@@ -119,7 +119,7 @@ const SignInPage = () => {
         <div className="bg-white shadow p-4 py-6 space-y-8 sm:p-6 sm:rounded-lg">
           {firebaseError && (
             <div
-              class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {firebaseError}

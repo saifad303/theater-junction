@@ -21,6 +21,8 @@ const SignUpPage = () => {
     setSignedInUser,
     createUserProvider,
     updateProfileProvider,
+    apiPrefixLink,
+    setTokenLocalStorage,
   } = useAuthProvider();
 
   const onSubmit = (data) => {
@@ -35,9 +37,11 @@ const SignUpPage = () => {
 
           axios
             .post(
-              "http://localhost:5000/users",
+              `${apiPrefixLink}users`,
               {
-                data: saveUser,
+                data: {
+                  email: data.email,
+                },
               },
               {
                 headers: {
@@ -46,17 +50,18 @@ const SignUpPage = () => {
               }
             )
             .then((res) => {
-              if (res.data.insertedId) {
-                reset();
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "User created successfully.",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate("/");
-              }
+              console.log(res.data);
+              setTokenLocalStorage(res.data.token);
+              setSignedInUser(result.user);
+              reset();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User has successfully been created.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
             });
         });
       })
@@ -66,20 +71,16 @@ const SignUpPage = () => {
       });
   };
 
-  console.log(errors);
-
   const googleSignInHandler = () => {
     googleSignInProviderHandler().then((result) => {
-      console.log(result.user);
-      const saveUser = {
-        name: result.user.displayName,
-        email: result.user.email,
-      };
+      // console.log(result.user);
       axios
         .post(
-          "http://localhost:5000/users",
+          `${apiPrefixLink}users`,
           {
-            data: saveUser,
+            data: {
+              email: result.user.email,
+            },
           },
           {
             headers: {
@@ -88,19 +89,19 @@ const SignUpPage = () => {
           }
         )
         .then((res) => {
-          if (res.data.insertedId) {
-            reset();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "User created successfully.",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
+          console.log(res.data);
+          setTokenLocalStorage(res.data.token);
+          setSignedInUser(result.user);
+          reset();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "User has been created successfully with google.",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
         });
-      setSignedInUser(result.user);
-      navigate("/");
     });
   };
 
@@ -124,7 +125,7 @@ const SignUpPage = () => {
         <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
           {firebaseError && (
             <div
-              class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
               {firebaseError}

@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
   const [signedInUser, setSignedInUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
+  const apiPrefixLink = "http://localhost:5000/";
 
   const googleSignInProviderHandler = () => {
     return signInWithPopup(auth, googleProvider);
@@ -44,6 +45,10 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const setTokenLocalStorage = (token) => {
+    localStorage.setItem("access-token", token);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -59,6 +64,8 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const value = {
+    setTokenLocalStorage,
+    apiPrefixLink,
     googleSignInProviderHandler,
     signedInUser,
     setSignedInUser,
