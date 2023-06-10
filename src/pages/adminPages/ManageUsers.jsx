@@ -1,6 +1,9 @@
 import React from "react";
+import useFetchUsers from "../../hooks/useFetchUsers";
 
 const ManageUsers = () => {
+  const [users, refetchUsersData, isUsersLoading] = useFetchUsers();
+  console.log(users);
   const tableItems = [
     {
       avatar:

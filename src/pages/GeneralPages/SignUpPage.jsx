@@ -97,7 +97,6 @@ const SignUpPage = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-            navigate("/");
           }
         });
       setSignedInUser(result.user);

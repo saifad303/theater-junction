@@ -40,8 +40,7 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  const signInWithEmailProvider = (userInfo) => {
-    const { email, password } = userInfo;
+  const signInWithEmailProvider = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 

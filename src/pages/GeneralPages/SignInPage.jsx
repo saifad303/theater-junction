@@ -1,21 +1,83 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthProvider } from "../../context/AuthProvider";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const SignInPage = () => {
   const {
     googleSignInProviderHandler,
     setSignedInUser,
-    createUserProvider,
-    updateProfileProvider,
+    signInWithEmailProvider,
   } = useAuthProvider();
+  const {
+    reset,
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const [firebaseError, setFirebaseError] = useState("");
+  const navigate = useNavigate();
 
   const googleSignInHandler = () => {
     googleSignInProviderHandler().then((result) => {
       console.log(result.user);
       setSignedInUser(result.user);
-      // navigate("/");
+      navigate("/");
     });
+  };
+
+  const onSubmit = (data) => {
+    signInWithEmailProvider(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+        setFirebaseError("");
+        const saveUser = { name: data.name, email: data.email };
+
+        // axios
+        //   .post(
+        //     "http://localhost:5000/users",
+        //     {
+        //       data: saveUser,
+        //     },
+        //     {
+        //       headers: {
+        //         "content-type": "application/json",
+        //       },
+        //     }
+        //   )
+        //   .then((res) => {
+        //     if (res.data.insertedId) {
+        //       reset();
+        //       Swal.fire({
+        //         position: "center",
+        //         icon: "success",
+        //         title: "User successfully signed in.",
+        //         showConfirmButton: false,
+        //         timer: 1500,
+        //       });
+        //     }
+        //   });
+
+        setSignedInUser(result.user);
+        reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "User successfully signed in.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err.message.split(":")[1]);
+        setFirebaseError(err.message.split(":")[1]);
+      });
   };
 
   return (
@@ -36,10 +98,19 @@ const SignInPage = () => {
           </div>
         </div>
         <div className="bg-white shadow p-4 py-6 space-y-8 sm:p-6 sm:rounded-lg">
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+          {firebaseError && (
+            <div
+              class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              role="alert"
+            >
+              {firebaseError}
+            </div>
+          )}
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div>
               <label className="font-medium">Email</label>
               <input
+                {...register("email")}
                 type="email"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-[#CF1164] shadow-sm rounded-lg"
@@ -48,12 +119,16 @@ const SignInPage = () => {
             <div>
               <label className="font-medium">Password</label>
               <input
+                {...register("password")}
                 type="password"
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-[#CF1164] shadow-sm rounded-lg"
               />
             </div>
-            <button className="w-full px-4 py-2 text-white font-medium bg-[#CF1164]  rounded-lg duration-150">
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-white font-medium bg-[#CF1164]  rounded-lg duration-150"
+            >
               Sign in
             </button>
           </form>
