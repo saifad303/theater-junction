@@ -24,8 +24,34 @@ const SignInPage = () => {
   const googleSignInHandler = () => {
     googleSignInProviderHandler().then((result) => {
       console.log(result.user);
-      setSignedInUser(result.user);
-      navigate("/");
+      axios
+        .post(
+          "http://localhost:5000/jwt",
+          {
+            data: { email: result.user.email },
+          },
+          {
+            headers: {
+              "content-type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          const token = res.data.token;
+          if (token) {
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "User successfully signed in with google.",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            setSignedInUser(result.user);
+            localStorage.setItem("access-token", token);
+            navigate("/");
+          }
+        });
     });
   };
 
@@ -36,43 +62,36 @@ const SignInPage = () => {
         console.log(loggedUser);
 
         setFirebaseError("");
-        const saveUser = { name: data.name, email: data.email };
+        const saveUser = { email: data.email };
 
-        // axios
-        //   .post(
-        //     "http://localhost:5000/users",
-        //     {
-        //       data: saveUser,
-        //     },
-        //     {
-        //       headers: {
-        //         "content-type": "application/json",
-        //       },
-        //     }
-        //   )
-        //   .then((res) => {
-        //     if (res.data.insertedId) {
-        //       reset();
-        //       Swal.fire({
-        //         position: "center",
-        //         icon: "success",
-        //         title: "User successfully signed in.",
-        //         showConfirmButton: false,
-        //         timer: 1500,
-        //       });
-        //     }
-        //   });
-
-        setSignedInUser(result.user);
-        reset();
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "User successfully signed in.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/");
+        axios
+          .post(
+            "http://localhost:5000/jwt",
+            {
+              data: saveUser,
+            },
+            {
+              headers: {
+                "content-type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            const token = res.data.token;
+            if (token) {
+              reset();
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "User successfully signed in.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              setSignedInUser(result.user);
+              localStorage.setItem("access-token", token);
+              navigate("/");
+            }
+          });
       })
       .catch((err) => {
         console.log(err.message.split(":")[1]);
