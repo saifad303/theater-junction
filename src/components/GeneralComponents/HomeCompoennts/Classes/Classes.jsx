@@ -9,11 +9,6 @@ const Classes = () => {
             explore our awesome{" "}
             <span className=" text-white bg-[#F89A2E] px-2">Services</span>
           </h1>
-
-          <p className="mt-4 text-gray-500 text-center xl:mt-6 ">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum
-            quam voluptatibus
-          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">

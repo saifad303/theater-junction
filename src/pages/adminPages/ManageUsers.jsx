@@ -2,17 +2,12 @@ import React, { useState } from "react";
 import useFetchUsers from "../../hooks/useFetchUsers";
 import axios from "axios";
 import { useAuthProvider } from "../../context/AuthProvider";
-import Spinner from "../../components/GeneralComponents/Loader/Spinner";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const [users, refetchUsersData, isUsersLoading] = useFetchUsers();
   const [isLoading, setIsLoading] = useState(false);
   const { apiPrefixLink } = useAuthProvider();
-  console.log(users);
-
-  if (isLoading) {
-    return <Spinner></Spinner>;
-  }
 
   const changeRoleHandler = (e, data) => {
     setIsLoading(true);
@@ -32,7 +27,13 @@ const ManageUsers = () => {
         }
       )
       .then((res) => {
-        console.log(res);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Role has successfully been changed.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         refetchUsersData();
         setIsLoading(false);
       });

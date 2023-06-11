@@ -109,110 +109,112 @@ const ManageClasses = () => {
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 divide-y">
-                  {allClasses.map((item, idx) => (
-                    <React.Fragment key={idx}>
-                      {selectedElementId && (
+                  {allClasses.map((item, idx) => {
+                    return (
+                      <React.Fragment key={idx}>
+                        {selectedElementId && (
+                          <FeedbackModal
+                            isOpen={modalIsOpen}
+                            onRequestClose={() => setModalIsOpen(false)}
+                            onSubmit={handleSubmit}
+                            elementId={selectedElementId}
+                          />
+                        )}
                         <FeedbackModal
                           isOpen={modalIsOpen}
-                          onRequestClose={() => setModalIsOpen(false)}
+                          onRequestClose={handleCloseModal}
                           onSubmit={handleSubmit}
-                          elementId={selectedElementId}
+                          elementId={item._id}
                         />
-                      )}
-                      <FeedbackModal
-                        isOpen={modalIsOpen}
-                        onRequestClose={handleCloseModal}
-                        onSubmit={handleSubmit}
-                        elementId={item._id}
-                      />
-                      <tr key={idx} className="divide-x">
-                        <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-6">
-                          {item.className}
-                        </td>
-                        <td className="px-6 whitespace-wrap">
-                          <p className="w-[200px]">{item.description}</p>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          ${item.price}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {item.availableSeats}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {item.totalEnrolled}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <select
-                            onChange={(e) => roleChangeHandler(e, item._id)}
-                            name=""
-                            id=""
-                            className=" border-[3px] border-[#CF1164] text-[#CF1164] rounded-lg px-6 py-3"
-                          >
-                            <option
-                              value=""
-                              className=" font-medium text-base text-[#F89A2E]"
+                        <tr key={idx} className="divide-x">
+                          <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-6">
+                            {item.className}
+                          </td>
+                          <td className="px-6 whitespace-wrap">
+                            <p className="w-[200px]">{item.description}</p>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            ${item.price}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {item.availableSeats}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {item.totalEnrolled}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <select
+                              onChange={(e) => roleChangeHandler(e, item._id)}
+                              name=""
+                              id=""
+                              className=" border-[3px] border-[#CF1164] text-[#CF1164] rounded-lg px-6 py-3"
                             >
-                              Select Role
-                            </option>
-                            <option
-                              value="pending"
-                              className=" font-medium text-base text-[#F89A2E]"
-                            >
-                              Pending
-                            </option>
-                            <option
-                              value="accepted"
-                              className=" font-medium text-base text-[#54C6C4]"
-                            >
-                              Accept
-                            </option>
-                            <option
-                              value="denied"
-                              className=" font-medium text-base text-[#CF1164]"
-                            >
-                              Denied
-                            </option>
-                          </select>
-                        </td>
-                        <td className="px-6 py-3 ">
-                          {item.status === "pending" && (
-                            <span className="bg-[#ffdfbb] text-[#ff8800] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
-                              Pending
-                            </span>
-                          )}
+                              <option
+                                value=""
+                                className=" font-medium text-base text-[#F89A2E]"
+                              >
+                                Select Role
+                              </option>
+                              <option
+                                value="pending"
+                                className=" font-medium text-base text-[#F89A2E]"
+                              >
+                                Pending
+                              </option>
+                              <option
+                                value="accepted"
+                                className=" font-medium text-base text-[#54C6C4]"
+                              >
+                                Accept
+                              </option>
+                              <option
+                                value="denied"
+                                className=" font-medium text-base text-[#CF1164]"
+                              >
+                                Denied
+                              </option>
+                            </select>
+                          </td>
+                          <td className="px-6 py-3 ">
+                            {item.status === "pending" && (
+                              <span className="bg-[#ffdfbb] text-[#ff8800] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                                Pending
+                              </span>
+                            )}
 
-                          {item.status === "accepted" && (
-                            <span className="border border-[#54C6C4] text-[#54C6C4] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
-                              Accepted
-                            </span>
-                          )}
+                            {item.status === "accepted" && (
+                              <span className="border border-[#54C6C4] text-[#54C6C4] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                                Accepted
+                              </span>
+                            )}
 
-                          {item.status === "denied" && (
-                            <span className="border border-[#CF1164] text-[#CF1164] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
-                              Denied
-                            </span>
-                          )}
-                        </td>
-                        <td className="px-6 py-4 whitespace-wrap">
-                          <p className=" w-40">{item.instructorEmail}</p>
-                        </td>
-                        <td className="px-6 whitespace-wrap">
-                          <p className="w-[200px]">{item.feedback}</p>
-                          <button
-                            onClick={() => {
-                              setSelectedElementId(item._id);
-                              setModalIsOpen(true);
-                            }}
-                            data-modal-target="defaultModal"
-                            data-modal-toggle="defaultModal"
-                            className=" mt-2 w-28 px-1 py-1 text-white duration-150 bg-[#54C6C4] rounded-lg  active:shadow-lg text-sm"
-                          >
-                            Add Feedback
-                          </button>
-                        </td>
-                      </tr>
-                    </React.Fragment>
-                  ))}
+                            {item.status === "denied" && (
+                              <span className="border border-[#CF1164] text-[#CF1164] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                                Denied
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 whitespace-wrap">
+                            <p className=" w-40">{item.instructorEmail}</p>
+                          </td>
+                          <td className="px-6 whitespace-wrap">
+                            <p className="w-[200px]">{item.feedback}</p>
+                            <button
+                              onClick={() => {
+                                setSelectedElementId(item._id);
+                                setModalIsOpen(true);
+                              }}
+                              data-modal-target="defaultModal"
+                              data-modal-toggle="defaultModal"
+                              className=" mt-2 w-28 px-1 py-1 text-white duration-150 bg-[#54C6C4] rounded-lg  active:shadow-lg text-sm"
+                            >
+                              Add Feedback
+                            </button>
+                          </td>
+                        </tr>
+                      </React.Fragment>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

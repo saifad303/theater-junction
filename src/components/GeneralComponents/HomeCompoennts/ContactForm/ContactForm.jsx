@@ -15,7 +15,8 @@ const ContactForm = () => {
           Contact <span className=" text-white bg-[#F89A2E] px-2">Us</span>
         </h2>
         <p className="mb-8 lg:mb-16 font-light text-center text-gray-500  sm:text-xl">
-          Got a technical issue? Want to send feedback about a beta feature?
+          Reach Out to Us for Any Inquiries, Support, or Collaboration
+          Opportunities
         </p>
         <form action="#" className="space-y-8">
           <div>
