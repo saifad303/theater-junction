@@ -1,6 +1,16 @@
 import React from "react";
+import useFetchClasses from "../../hooks/useFetchClasses";
+import Spinner from "../../components/GeneralComponents/Loader/Spinner";
 
 const MyClasses = () => {
+  const [classes, refetchClassData, isClassLoading] = useFetchClasses();
+
+  console.log(classes);
+
+  if (isClassLoading) {
+    return <Spinner></Spinner>;
+  }
+
   const tableItems = [
     {
       name: "Liam James",
@@ -41,7 +51,7 @@ const MyClasses = () => {
           <div className="w-full mx-auto">
             <div className="max-w-lg">
               <h3 className="text-gray-700 text-xl font-semibold sm:text-3xl">
-                My selected classes
+                My classes
               </h3>
             </div>
             <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
@@ -59,42 +69,45 @@ const MyClasses = () => {
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 divide-y">
-                  {tableItems.map((item, idx) => (
+                  {classes.map((item, idx) => (
                     <tr key={idx} className="divide-x">
                       <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-6">
                         <span>{idx + 1}</span>
-                        {item.name}
+                        {item.className}
                       </td>
-                      <td className="px-6 whitespace-nowrap">{item.email}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {item.position}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {item.salary}
+                      <td className="px-6 whitespace-wrap">
+                        <p className=" w-[200px]">{item.description}</p>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {item.salary}
+                        ${item.price}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="bg-[#ffdfbb] text-[#ff8800] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
-                          Pending
-                        </span>
-                        <br />
-                        <br />
-                        <span className="border border-[#54C6C4] text-[#54C6C4] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
-                          Accepted
-                        </span>
-                        <br />
-                        <br />
-                        <span className="border border-[#CF1164] text-[#CF1164] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
-                          Denied
-                        </span>
+                        {item.availableSeats}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {item.totalEnrolled}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {item.status === "pending" && (
+                          <span className="bg-[#ffdfbb] text-[#ff8800] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                            Pending
+                          </span>
+                        )}
+
+                        {item.status === "accepted" && (
+                          <span className="border border-[#54C6C4] text-[#54C6C4] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                            Accepted
+                          </span>
+                        )}
+
+                        {item.status === "denied" && (
+                          <span className="border border-[#CF1164] text-[#CF1164] text-xs font-medium mr-2 px-2.5 py-0.5 rounded ">
+                            Denied
+                          </span>
+                        )}
                       </td>
                       <td className="px-6 py-3 ">
-                        <p className=" w-52">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit.
-                        </p>
+                        <p className=" w-52">{item.feedback}</p>
                       </td>
                       <td className="px-6 py-4 whitespace-wrap">
                         <button className="px-5 py-3 w-32 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">

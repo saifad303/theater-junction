@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuthProvider } from "../../context/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -10,6 +10,7 @@ const SignInPage = () => {
     googleSignInProviderHandler,
     setSignedInUser,
     signInWithEmailProvider,
+    signOutProviderHandler,
     apiPrefixLink,
     setTokenLocalStorage,
   } = useAuthProvider();
@@ -21,6 +22,14 @@ const SignInPage = () => {
   } = useForm();
   const [firebaseError, setFirebaseError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from.pathname || "/";
+
+  // if (from !== "/") {
+  //   localStorage.removeItem("access-token");
+  //   signOutProviderHandler().then((res) => {});
+  // }
 
   const googleSignInHandler = () => {
     googleSignInProviderHandler().then((result) => {
@@ -51,7 +60,7 @@ const SignInPage = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          navigate("/");
+          navigate(from);
         });
     });
   };
@@ -90,7 +99,7 @@ const SignInPage = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-            navigate("/");
+            navigate(from);
           });
       })
       .catch((err) => {

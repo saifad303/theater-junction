@@ -12,6 +12,10 @@ const Menu = () => {
 
   const admin = location.pathname.split("/")[1];
 
+  const dashboardNavigateHandler = () => {
+    navigate("/admin");
+  };
+
   return (
     <ul className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0 font-medium">
       <li className="text-gray-700 ">
@@ -25,15 +29,14 @@ const Menu = () => {
       </li>
       {signedInUser && (
         <li className="text-gray-700 ">
-          <a
-            // onClick={dashboardNavigateHandler}
-            href="/admin"
+          <button
+            onClick={dashboardNavigateHandler}
             className={`block hover:border-t-0 hover:border-l-0 hover:border-r-0 hover:border-2 hover:border-[#F89A2E] border-2  border-l-0 border-r-0 border-t-0 ${
               admin === "admin" ? "border-[#F89A2E]" : "border-b-0"
             }`}
           >
             Dashboard
-          </a>
+          </button>
         </li>
       )}
 
