@@ -39,7 +39,9 @@ const SignInPage = () => {
           `${apiPrefixLink}users`,
           {
             data: {
+              name: result.user.displayName,
               email: result.user.email,
+              avatar: result.user.photoURL,
             },
           },
           {
@@ -69,7 +71,7 @@ const SignInPage = () => {
     signInWithEmailProvider(data.email, data.password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        console.log("loggedUser = ", loggedUser);
 
         setFirebaseError("");
 
@@ -78,6 +80,7 @@ const SignInPage = () => {
             `${apiPrefixLink}users`,
             {
               data: {
+                name: result.user.displayName,
                 email: result.user.email,
               },
             },

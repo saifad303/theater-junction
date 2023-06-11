@@ -79,7 +79,9 @@ const SignUpPage = () => {
           `${apiPrefixLink}users`,
           {
             data: {
+              name: result.user.displayName,
               email: result.user.email,
+              avatar: result.user.photoURL,
             },
           },
           {

@@ -119,6 +119,15 @@ const MyClasses = () => {
                 </tbody>
               </table>
             </div>
+            <div>
+              {classes.length === 0 ? (
+                <p className=" font-medium text-xl text-[#CF1164]">
+                  No class available with this instructor
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
       </div>

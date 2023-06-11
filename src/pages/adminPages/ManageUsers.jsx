@@ -1,53 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import useFetchUsers from "../../hooks/useFetchUsers";
+import axios from "axios";
+import { useAuthProvider } from "../../context/AuthProvider";
+import Spinner from "../../components/GeneralComponents/Loader/Spinner";
 
 const ManageUsers = () => {
   const [users, refetchUsersData, isUsersLoading] = useFetchUsers();
+  const [isLoading, setIsLoading] = useState(false);
+  const { apiPrefixLink } = useAuthProvider();
   console.log(users);
-  const tableItems = [
-    {
-      avatar:
-        "https://images.unsplash.com/photo-1511485977113-f34c92461ad9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
-      name: "Liam James",
-      email: "liamjames@example.com",
-      phone_nimber: "+1 (555) 000-000",
-      position: "Software engineer",
-      salary: "$100K",
-    },
-    {
-      avatar: "https://randomuser.me/api/portraits/men/86.jpg",
-      name: "Olivia Emma",
-      email: "oliviaemma@example.com",
-      phone_nimber: "+1 (555) 000-000",
-      position: "Product designer",
-      salary: "$90K",
-    },
-    {
-      avatar: "https://randomuser.me/api/portraits/women/79.jpg",
-      name: "William Benjamin",
-      email: "william.benjamin@example.com",
-      phone_nimber: "+1 (555) 000-000",
-      position: "Front-end developer",
-      salary: "$80K",
-    },
-    {
-      avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
-      name: "Henry Theodore",
-      email: "henrytheodore@example.com",
-      phone_nimber: "+1 (555) 000-000",
-      position: "Laravel engineer",
-      salary: "$120K",
-    },
-    {
-      avatar:
-        "https://images.unsplash.com/photo-1439911767590-c724b615299d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ",
-      name: "Amelia Elijah",
-      email: "amelia.elijah@example.com",
-      phone_nimber: "+1 (555) 000-000",
-      position: "Open source manager",
-      salary: "$75K",
-    },
-  ];
+
+  if (isLoading) {
+    return <Spinner></Spinner>;
+  }
+
+  const changeRoleHandler = (e, data) => {
+    setIsLoading(true);
+    e.preventDefault();
+    console.log("data = ", data);
+    axios
+      .put(
+        `${apiPrefixLink}usersRole`,
+        {
+          data: data,
+        },
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: localStorage.getItem("access-token"),
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        refetchUsersData();
+        setIsLoading(false);
+      });
+  };
 
   return (
     <div className="p-4 sm:ml-64">
@@ -67,12 +56,12 @@ const ManageUsers = () => {
                   <tr>
                     <th className="py-3 px-6">Username</th>
                     <th className="py-3 px-6">Email</th>
-                    <th className="py-3 px-6">Role</th>
+                    <th className="py-3 px-6">Current Role</th>
                     <th className="py-3 px-6">Student / Instructor</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 divide-y">
-                  {tableItems.map((item, idx) => (
+                  {users.map((item, idx) => (
                     <tr key={idx}>
                       <td className="flex items-center gap-x-3 py-3 px-6 whitespace-nowrap">
                         <img
@@ -89,21 +78,90 @@ const ManageUsers = () => {
                         {item.email}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {item.position}
+                        {item.role}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <button
-                          href="javascript:void()"
-                          className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#54C6C4]"
-                        >
-                          Make Student
-                        </button>
-                        <button
-                          href="javascript:void()"
-                          className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#F89A2E]"
-                        >
-                          Make Instructor
-                        </button>
+                        {item.role === "admin" && (
+                          <>
+                            <button
+                              onClick={(e) =>
+                                changeRoleHandler(e, {
+                                  id: item._id,
+                                  role: "student",
+                                })
+                              }
+                              className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#54C6C4]"
+                            >
+                              Make Student
+                            </button>
+                            &nbsp;&nbsp;
+                            <button
+                              onClick={(e) =>
+                                changeRoleHandler(e, {
+                                  id: item._id,
+                                  role: "instructor",
+                                })
+                              }
+                              className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#F89A2E]"
+                            >
+                              Make Instructor
+                            </button>
+                          </>
+                        )}
+                        {item.role === "student" && (
+                          <>
+                            <button
+                              onClick={(e) =>
+                                changeRoleHandler(e, {
+                                  id: item._id,
+                                  role: "admin",
+                                })
+                              }
+                              className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#CF1164]"
+                            >
+                              Make Admin
+                            </button>
+                            &nbsp;&nbsp;
+                            <button
+                              onClick={(e) =>
+                                changeRoleHandler(e, {
+                                  id: item._id,
+                                  role: "instructor",
+                                })
+                              }
+                              className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#F89A2E]"
+                            >
+                              Make Instructor
+                            </button>
+                          </>
+                        )}
+                        {item.role === "instructor" && (
+                          <>
+                            <button
+                              onClick={(e) =>
+                                changeRoleHandler(e, {
+                                  id: item._id,
+                                  role: "admin",
+                                })
+                              }
+                              className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#CF1164]"
+                            >
+                              Make Admin
+                            </button>
+                            &nbsp;&nbsp;
+                            <button
+                              onClick={(e) =>
+                                changeRoleHandler(e, {
+                                  id: item._id,
+                                  role: "student",
+                                })
+                              }
+                              className="py-2 leading-none px-3 font-medium text-white rounded-lg bg-[#54C6C4]"
+                            >
+                              Make Student
+                            </button>
+                          </>
+                        )}
                       </td>
                     </tr>
                   ))}
