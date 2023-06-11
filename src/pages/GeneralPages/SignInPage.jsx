@@ -42,6 +42,8 @@ const SignInPage = () => {
               name: result.user.displayName,
               email: result.user.email,
               avatar: result.user.photoURL,
+              role: "student",
+              selectedClassIds: [],
             },
           },
           {
@@ -82,6 +84,9 @@ const SignInPage = () => {
               data: {
                 name: result.user.displayName,
                 email: result.user.email,
+                avatar: result.user.photoURL,
+                role: "student",
+                selectedClassIds: [],
               },
             },
             {

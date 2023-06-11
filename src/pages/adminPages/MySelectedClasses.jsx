@@ -1,38 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import useFetchUser from "../../hooks/useFetchUser";
+import useFetchAllClass from "../../hooks/useFetchAllClass";
+import { useAuthProvider } from "../../context/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const MySelectedClasses = () => {
-  const tableItems = [
-    {
-      name: "Liam James",
-      email: "liamjames@example.com",
-      position: "Software engineer",
-      salary: "$100K",
-    },
-    {
-      name: "Olivia Emma",
-      email: "oliviaemma@example.com",
-      position: "Product designer",
-      salary: "$90K",
-    },
-    {
-      name: "William Benjamin",
-      email: "william.benjamin@example.com",
-      position: "Front-end developer",
-      salary: "$80K",
-    },
-    {
-      name: "Henry Theodore",
-      email: "henrytheodore@example.com",
-      position: "Laravel engineer",
-      salary: "$120K",
-    },
-    {
-      name: "Amelia Elijah",
-      email: "amelia.elijah@example.com",
-      position: "Open source manager",
-      salary: "$75K",
-    },
-  ];
+  const [user, userRefetch, isFetchUserLoading] = useFetchUser();
+  const [allClasses, refetchAllClass, isFetchClassLoading] = useFetchAllClass();
+  const { apiPrefixLink, signedInUser } = useAuthProvider();
+
+  if (isFetchUserLoading || isFetchClassLoading) {
+    return "...loading";
+  }
+
+  const myClassDelHandler = (e, id) => {
+    e.preventDefault();
+    console.log(id);
+
+    axios
+      .put(
+        `${apiPrefixLink}deleteClassId`,
+        {
+          data: {
+            id: id,
+            email: signedInUser.email,
+          },
+        },
+        {
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Class successfully deleted",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetchAllClass();
+        userRefetch();
+      });
+  };
 
   return (
     <div className="p-4 sm:ml-64">
@@ -57,33 +70,45 @@ const MySelectedClasses = () => {
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 divide-y">
-                  {tableItems.map((item, idx) => (
-                    <tr key={idx} className="divide-x">
-                      <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-6">
-                        <span>{idx + 1}</span>
-                        {item.name}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {item.email}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {item.position}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {item.salary}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <button className="px-5 py-3 text-white duration-150 bg-[#54C6C4] rounded-lg  active:shadow-lg">
-                          Pay course
-                        </button>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <button className="px-5 py-3 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                  {user.selectedClassIds.map((classId, idx) => {
+                    return allClasses.reverse().map((classItem, idxx) => {
+                      if (classId === classItem._id) {
+                        return (
+                          <tr key={idxx} className="divide-x">
+                            <td className="px-6 py-4 whitespace-nowrap flex items-center gap-x-6">
+                              {classItem.className}
+                            </td>
+                            <td className="px-6 py-4 whitespace-wrap">
+                              <p className=" w-[200px]">
+                                {classItem.description}
+                              </p>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {classItem.price}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              {classItem.availableSeats}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <button className="px-5 py-3 text-white duration-150 bg-[#54C6C4] rounded-lg  active:shadow-lg">
+                                Pay course
+                              </button>
+                            </td>
+                            <td
+                              onClick={(e) =>
+                                myClassDelHandler(e, classItem._id)
+                              }
+                              className="px-6 py-4 whitespace-nowrap"
+                            >
+                              <button className="px-5 py-3 text-white duration-150 bg-[#CF1164] rounded-lg  active:shadow-lg">
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      }
+                    });
+                  })}
                 </tbody>
               </table>
             </div>

@@ -20,6 +20,7 @@ export const useAuthProvider = () => {
 const AuthProvider = ({ children }) => {
   const [signedInUser, setSignedInUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [studentClassList, setStudentClassList] = useState("");
   const googleProvider = new GoogleAuthProvider();
   const apiPrefixLink = "http://localhost:5000/";
 
@@ -77,6 +78,8 @@ const AuthProvider = ({ children }) => {
     createUserProvider,
     updateProfileProvider,
     signInWithEmailProvider,
+    setStudentClassList,
+    studentClassList,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
