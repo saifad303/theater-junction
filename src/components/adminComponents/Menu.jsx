@@ -225,7 +225,7 @@ const Menu = () => {
         </>
       )}
 
-      <li>
+      {/* <li>
         <ActiveRoute
           to="/admin/grid"
           className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 "
@@ -245,7 +245,7 @@ const Menu = () => {
           </svg>
           <span className="flex-1 ml-3 whitespace-nowrap">Grid</span>
         </ActiveRoute>
-      </li>
+      </li> */}
     </ul>
   );
 };

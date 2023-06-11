@@ -40,7 +40,10 @@ const SignUpPage = () => {
               `${apiPrefixLink}users`,
               {
                 data: {
+                  name: result.user.displayName,
                   email: data.email,
+                  avatar: result.user.photoURL,
+                  role: "student",
                 },
               },
               {
