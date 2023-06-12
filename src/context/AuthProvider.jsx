@@ -49,6 +49,8 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  const blackOrWhite = () => {};
+
   const signInWithEmailProvider = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };

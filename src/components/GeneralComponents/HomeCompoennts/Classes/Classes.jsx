@@ -2,10 +2,10 @@ import React from "react";
 
 const Classes = () => {
   return (
-    <section className="bg-white ">
+    <section className="bg-white dark:bg-black ">
       <div className="container px-6 py-10 mx-auto">
         <div>
-          <h1 className="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl ">
+          <h1 className="dark:text-white text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl ">
             explore our awesome{" "}
             <span className=" text-white bg-[#F89A2E] px-2">Services</span>
           </h1>
@@ -34,11 +34,11 @@ const Classes = () => {
                 </svg>
               </span>
 
-              <h1 className="text-xl font-semibold text-gray-700 capitalize ">
+              <h1 className="dark:text-white text-xl font-semibold text-gray-700 capitalize ">
                 Explore the Possibilities and Unleash Your Potential
               </h1>
 
-              <p className="text-gray-500 ">
+              <p className="text-gray-500 dark:text-white">
                 Discover an unforgettable summer adventure with our exceptional
                 range of services. At our summer camp, we offer a diverse array
                 of activities and programs tailored to create lifelong memories

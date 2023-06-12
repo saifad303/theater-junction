@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="pt-10 bg-gray-900 text-white">
+    <footer className="pt-10 bg-gray-900 text-white dark:bg-black">
       <div className="max-w-screen-xl mx-auto px-4  md:px-8">
         <div className="justify-between md:flex">
           <div className="space-y-6">
@@ -13,14 +13,16 @@ const Footer = () => {
               Extraordinary Journey of Play, Wonder, and Delight
             </p>
             <ul className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
-              <li className=" hover:text-[#CF1164] duration-150">
-                <Link to="/">Home</Link>
+              <li className=" hover:text-[#CF1164] duration-150 ">
+                <Link className="" to="/">
+                  Home
+                </Link>
               </li>
               <li className=" hover:text-[#CF1164] duration-150">
-                <Link to="/toys">Instructors</Link>
+                <Link to="/instructor">Instructors</Link>
               </li>
               <li className=" hover:text-[#CF1164] duration-150">
-                <Link to="/blogs">Classes</Link>
+                <Link to="/classes">Classes</Link>
               </li>
             </ul>
           </div>

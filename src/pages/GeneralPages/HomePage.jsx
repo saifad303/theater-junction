@@ -7,17 +7,11 @@ import ClassesSection from "../../components/GeneralComponents/HomeCompoennts/Cl
 
 const HomePage = () => {
   return (
-    <div>
+    <div className=" dark:bg-black">
       <Slider></Slider>
-      <div className=" py-6">
-        <Classes></Classes>
-      </div>
-      <div className=" py-8">
-        <ClassesSection></ClassesSection>
-      </div>
-      <div className=" py-8">
-        <Instructor></Instructor>
-      </div>
+      <Classes></Classes>
+      <ClassesSection></ClassesSection>
+      <Instructor></Instructor>
       <ContactForm></ContactForm>
     </div>
   );

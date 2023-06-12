@@ -11,9 +11,9 @@ const Instructor = () => {
 
   console.log("topInstructor = ", topInstructor);
   return (
-    <section className="bg-white ">
+    <section className="bg-white dark:bg-black">
       <div className="container px-6 py-10 mx-auto">
-        <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl ">
+        <h1 className="dark:text-white text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl ">
           Meet Our{" "}
           <span className=" text-white bg-[#F89A2E] px-2">Instructor</span>
         </h1>
@@ -23,7 +23,7 @@ const Instructor = () => {
             return (
               <div
                 key={idx}
-                className="flex flex-col items-center p-8 transition-colors duration-300 transform cursor-pointer group hover:bg-[#F89A2E] rounded-xl"
+                className="flex dark:border dark:border-[#F89A2E] flex-col items-center p-8 transition-colors duration-300 transform cursor-pointer group hover:bg-[#F89A2E] rounded-xl"
               >
                 <img
                   className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
@@ -31,7 +31,7 @@ const Instructor = () => {
                   alt=""
                 />
 
-                <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">
+                <h1 className="dark:text-white mt-4 text-2xl font-semibold text-gray-700 capitalize  group-hover:text-white">
                   {user.name}
                 </h1>
 

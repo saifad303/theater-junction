@@ -9,11 +9,13 @@ const ClassesSection = () => {
 
   console.log(topSixClasses);
   return (
-    <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+    <div className=" dark:bg-black max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
       <div className=" mb-10">
-        <h1 className="text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl ">
+        <h1 className="dark:text-white text-2xl text-center font-semibold text-gray-700 capitalize lg:text-3xl ">
           explore our top{" "}
-          <span className=" text-white bg-[#F89A2E] px-2">Classes</span>
+          <span className="dark:text-white text-white bg-[#F89A2E] px-2">
+            Classes
+          </span>
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
@@ -22,7 +24,7 @@ const ClassesSection = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             key={idx}
-            className="rounded overflow-hidden shadow-lg"
+            className="rounded overflow-hidden shadow-lg dark:border dark:border-[#F89A2E]"
           >
             <a href="#">
               <div className="relative overflow-hidden">
@@ -50,7 +52,9 @@ const ClassesSection = () => {
               >
                 {value.className}
               </a>
-              <p className="text-gray-500 text-sm">{value.description}</p>
+              <p className="text-gray-500 dark:text-white text-sm">
+                {value.description}
+              </p>
             </div>
           </motion.div>
         ))}
