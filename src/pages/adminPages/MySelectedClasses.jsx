@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import useFetchUser from "../../hooks/useFetchUser";
 import useFetchAllClass from "../../hooks/useFetchAllClass";
+import useFetchAllPayment from "../../hooks/useFetchAllPayment";
 import { useAuthProvider } from "../../context/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const MySelectedClasses = () => {
+  const [payments, refetchPayment, isPaymentLoading] = useFetchAllPayment();
   const [user, userRefetch, isFetchUserLoading] = useFetchUser();
   const [allClasses, refetchAllClass, isFetchClassLoading] = useFetchAllClass();
   const { apiPrefixLink, signedInUser } = useAuthProvider();
   const navigate = useNavigate();
 
-  if (isFetchUserLoading || isFetchClassLoading) {
+  console.log(payments);
+
+  if (isFetchUserLoading || isFetchClassLoading || isPaymentLoading) {
     return "...loading";
   }
 
@@ -79,7 +83,7 @@ const MySelectedClasses = () => {
                 </thead>
                 <tbody className="text-gray-600 divide-y">
                   {user.selectedClassIds.map((classId, idx) => {
-                    return allClasses.reverse().map((classItem, idxx) => {
+                    return allClasses.map((classItem, idxx) => {
                       if (classId === classItem._id) {
                         return (
                           <tr key={idxx} className="divide-x">

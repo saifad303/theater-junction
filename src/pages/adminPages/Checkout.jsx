@@ -93,7 +93,7 @@ const Checkout = ({ cart, price }) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/admin/enrolled-classes");
+        navigate("/admin/selected-classes");
       });
     }
   };

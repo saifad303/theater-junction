@@ -22,8 +22,7 @@ const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [studentClassList, setStudentClassList] = useState("");
   const googleProvider = new GoogleAuthProvider();
-  const apiPrefixLink =
-    "https://theater-junction-app-server-r1f3tyep5-saifad303.vercel.app/";
+  const apiPrefixLink = "http://localhost:5000/";
 
   // https://theater-junction-app-server-r1f3tyep5-saifad303.vercel.app/
 
