@@ -1,6 +1,7 @@
 import React from "react";
 import useFetchAllClassesForHome from "../../../../hooks/useFetchAllClassesForHome";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ClassesSection = () => {
   const [topSixClasses, refetchSixClass, isSixClassLoading] =
@@ -17,7 +18,12 @@ const ClassesSection = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
         {topSixClasses.map((value, idx) => (
-          <div key={idx} className="rounded overflow-hidden shadow-lg">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            key={idx}
+            className="rounded overflow-hidden shadow-lg"
+          >
             <a href="#">
               <div className="relative overflow-hidden">
                 <img
@@ -46,7 +52,7 @@ const ClassesSection = () => {
               </a>
               <p className="text-gray-500 text-sm">{value.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
       <div className=" w-full text-center">

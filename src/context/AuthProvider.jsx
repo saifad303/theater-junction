@@ -24,6 +24,10 @@ const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const apiPrefixLink = "http://localhost:5000/";
 
+  // https://theater-junction-app-server-h4qkbwm9b-saifad303.vercel.app/
+
+  // http://localhost:5000/
+
   const googleSignInProviderHandler = () => {
     return signInWithPopup(auth, googleProvider);
   };
