@@ -1,18 +1,12 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useAuthProvider } from "../../context/AuthProvider";
+import React from "react";
 import useFetchAllPayment from "../../hooks/useFetchAllPayment";
 
-const MyEnrolledClasses = () => {
-  const { apiPrefixLink, signedInUser } = useAuthProvider();
-
+const PayHistory = () => {
   const [payments, refetchPayment, isPaymentLoading] = useFetchAllPayment();
 
   if (isPaymentLoading) {
     return "Loading...";
   }
-
-  console.log(payments);
 
   return (
     <div className="p-4 sm:ml-64">
@@ -21,7 +15,7 @@ const MyEnrolledClasses = () => {
           <div className="w-full mx-auto px-4">
             <div className="max-w-lg">
               <h3 className="text-gray-700 text-xl font-semibold sm:text-3xl">
-                My enrolled classes
+                My payment history
               </h3>
             </div>
             <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
@@ -30,6 +24,8 @@ const MyEnrolledClasses = () => {
                   <tr className="divide-x">
                     <th className="py-3 px-6">Course ID</th>
                     <th className="py-3 px-6">Class Name</th>
+                    <th className="py-3 px-6">Transaction ID</th>
+                    <th className="py-3 px-6">Payment date</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 divide-y">
@@ -41,6 +37,12 @@ const MyEnrolledClasses = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         {payment.courseName}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {payment.transactionId}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {payment.date}
                       </td>
                     </tr>
                   ))}
@@ -54,4 +56,4 @@ const MyEnrolledClasses = () => {
   );
 };
 
-export default MyEnrolledClasses;
+export default PayHistory;

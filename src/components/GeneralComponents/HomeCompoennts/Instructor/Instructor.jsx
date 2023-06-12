@@ -1,9 +1,15 @@
 import React from "react";
 import useFetchInstructor from "../../../../hooks/useFetchInstructor";
+import useFetchTopTeacher from "../../../../hooks/useFetchTopTeacher";
 
 const Instructor = () => {
   const [instructor, refetchInstructorData, isInstructorLoading] =
     useFetchInstructor();
+
+  const [topInstructor, refetchTopInstructor, isTopInstructorLoading] =
+    useFetchTopTeacher();
+
+  console.log("topInstructor = ", topInstructor);
   return (
     <section className="bg-white ">
       <div className="container px-6 py-10 mx-auto">

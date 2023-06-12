@@ -4,15 +4,23 @@ import useFetchAllClass from "../../hooks/useFetchAllClass";
 import { useAuthProvider } from "../../context/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const MySelectedClasses = () => {
   const [user, userRefetch, isFetchUserLoading] = useFetchUser();
   const [allClasses, refetchAllClass, isFetchClassLoading] = useFetchAllClass();
   const { apiPrefixLink, signedInUser } = useAuthProvider();
+  const navigate = useNavigate();
 
   if (isFetchUserLoading || isFetchClassLoading) {
     return "...loading";
   }
+
+  const coursePayHandler = (e, courseId, price, className) => {
+    e.preventDefault();
+
+    navigate(`/admin/payment/${price}/${courseId}/${className}`);
+  };
 
   const myClassDelHandler = (e, id) => {
     e.preventDefault();
@@ -84,19 +92,33 @@ const MySelectedClasses = () => {
                               </p>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              {classItem.price}
+                              ${classItem.price}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               {classItem.availableSeats}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <button className="px-5 py-3 text-white duration-150 bg-[#54C6C4] rounded-lg  active:shadow-lg">
+                              <button
+                                onClick={(e) =>
+                                  coursePayHandler(
+                                    e,
+                                    classItem._id,
+                                    classItem.price,
+                                    classItem.className
+                                  )
+                                }
+                                className="px-5 py-3 text-white duration-150 bg-[#54C6C4] rounded-lg  active:shadow-lg"
+                              >
                                 Pay course
                               </button>
                             </td>
                             <td
                               onClick={(e) =>
-                                myClassDelHandler(e, classItem._id)
+                                myClassDelHandler(
+                                  e,
+                                  classItem._id,
+                                  classItem.price
+                                )
                               }
                               className="px-6 py-4 whitespace-nowrap"
                             >
