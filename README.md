@@ -1,6 +1,6 @@
 # Epic Hero Heaven
 
-Welcome to the [Theater Junction](https://theater-junction.web.app/) a platform for selling toys featuring famous Marvel, DC, and Transformers superheroes.
+Welcome to the [Theater Junction](https://theater-junction.web.app/) a platform for teaching drama in summer camp season.
 
 ## Key Features
 
