@@ -35,13 +35,14 @@ const Classes = () => {
               </span>
 
               <h1 className="text-xl font-semibold text-gray-700 capitalize ">
-                Simple & clean designs
+                Explore the Possibilities and Unleash Your Potential
               </h1>
 
               <p className="text-gray-500 ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Provident ab nulla quod dignissimos vel non corrupti doloribus
-                voluptatum eveniet
+                Discover an unforgettable summer adventure with our exceptional
+                range of services. At our summer camp, we offer a diverse array
+                of activities and programs tailored to create lifelong memories
+                for children and teenagers.
               </p>
 
               <a
