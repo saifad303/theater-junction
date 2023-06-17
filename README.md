@@ -1,4 +1,4 @@
-# Epic Hero Heaven
+# Theater Junction
 
 Welcome to the [Theater Junction](https://theater-junction.web.app/) a platform for teaching drama in summer camp season.
 
